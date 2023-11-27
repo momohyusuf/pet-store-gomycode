@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import PetList from "./components/PetList";
 import Filters from "./components/Filters";
 import { useFilterPets } from "./hooks/useFilterPets";
-import Modal from "./components/Modal";
 
 function App() {
   const [filterState, setFilterState] = React.useState({
@@ -23,7 +22,7 @@ function App() {
       <Navbar />
 
       <Filters setFilterState={setFilterState} />
-      <Modal />
+
       <PetList pets={pets} setAdoptPet={setAdoptPet} />
     </>
   );
