@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Input } from "antd";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -17,14 +16,11 @@ const Navbar = () => {
           <p className="font-bold text-orange-600">My pet shop</p>
         </div>
 
-        <Input.Search
-          placeholder="input search text"
-          //   onSearch={onSearch}
-          status="warning"
-          style={{
-            width: 300,
-          }}
-        />
+        <div className="flex gap-4">
+          <NavLink to="/">home</NavLink>
+          <NavLink to="/marketplace">marketplace</NavLink>
+          <NavLink to="/about">about</NavLink>
+        </div>
       </div>
     </nav>
   );

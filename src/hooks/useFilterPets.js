@@ -5,8 +5,6 @@ export function useFilterPets({ value, filterType, petId }) {
   const [pets, setPets] = React.useState(petData);
   const [adoptPet, setAdoptPet] = React.useState("adopt pet");
 
-  console.log(value, filterType, petId);
-
   //   logic
   React.useEffect(() => {
     // return all the values if value is eqaul to empty string
