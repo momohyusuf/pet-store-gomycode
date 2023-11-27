@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { TagOutlined } from "@ant-design/icons";
 import { Button, Card, Tooltip, Tag } from "antd";
+import { useFilterPets } from "../hooks/useFilterPets";
 
 const { Meta } = Card;
-const PetCard = ({ adopted, location, name, photo, race, type }) => {
+const PetCard = ({
+  id,
+  adopted,
+  location,
+  name,
+  photo,
+  race,
+  type,
+  setAdoptPet,
+}) => {
+  const [petId, setPetId] = useState("0");
+  const { pets } = useFilterPets({ petId: petId });
+
+  const handleAdoptPet = (id) => {
+    setPetId(id);
+    alert("pet adopted");
+  };
+
   return (
     <Card
       style={{
@@ -25,9 +43,14 @@ const PetCard = ({ adopted, location, name, photo, race, type }) => {
         <Tag color="error">{type}</Tag> <Tag color="default">{race}</Tag>
         <Tag color="success">{location}</Tag>
         <Tooltip color="orange" title="Adopt pet">
-          <Button size="small" color="warning">
-            Adopt
+          <Button
+            size="small"
+            color="warning"
+            onClick={() => handleAdoptPet(id)}
+          >
+            Buy now
           </Button>
+          {adopted ? "adopted" : "available"}
         </Tooltip>
       </div>
     </Card>
