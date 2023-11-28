@@ -1,7 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Button } from "antd";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const logOutUser = () => {
+    localStorage.clear("user");
+
+    navigate("/login");
+  };
+
   return (
     <nav className="shadow py-1 ">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
@@ -20,6 +29,11 @@ const Navbar = () => {
           <NavLink to="/">home</NavLink>
           <NavLink to="/marketplace">marketplace</NavLink>
           <NavLink to="/about">about</NavLink>
+          <NavLink to="/login">login</NavLink>
+
+          <Button type="primary" onClick={logOutUser}>
+            Logout
+          </Button>
         </div>
       </div>
     </nav>
