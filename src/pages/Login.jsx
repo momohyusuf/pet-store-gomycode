@@ -1,14 +1,15 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../features/user/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log("Success:", values);
-
-    localStorage.setItem("user", JSON.stringify(values));
+    dispatch(updateUser(values.username));
     navigate("/admin");
   };
 
@@ -16,9 +17,7 @@ const Login = () => {
     console.log("Failed:", errorInfo);
   };
 
-  return localStorage.getItem("user") ? (
-    <Navigate to={"/"} />
-  ) : (
+  return (
     <section className="grid place-items-center h-screen">
       <div className="shadow-md rounded-md max-w-md w-full p-2">
         <h2>Welcome</h2>
