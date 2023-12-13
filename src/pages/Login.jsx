@@ -1,16 +1,21 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Navigate, useNavigate } from "react-router-dom";
+import { updateProfileName } from "../features/user/userSlice";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../features/user/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    dispatch(updateUser(values.username));
     navigate("/admin");
+    dispatch(
+      updateProfileName({
+        name: values.username,
+        Password: values.password,
+      })
+    );
   };
 
   const onFinishFailed = (errorInfo) => {

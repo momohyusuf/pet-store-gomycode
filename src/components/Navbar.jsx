@@ -1,11 +1,10 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "antd";
-import { useSelector } from "react-redux";
+
 import { Avatar } from "antd";
 
 const Navbar = () => {
-  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const logOutUser = () => {
@@ -36,10 +35,10 @@ const Navbar = () => {
             Logout
           </Button>
         </div>
-        <div className="flex items-center gap-2 justify-end">
-          <Avatar>{user[0]}</Avatar>
+        {/* <div className="flex items-center gap-2 justify-end">
+          <Avatar>{user?.[0]}</Avatar>
           <p className="text-red-500 font-medium capitalize">{user}</p>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

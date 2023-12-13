@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Input, Button } from "antd";
-import { updateUser } from "../features/user/userSlice";
+import { updateOnlyName } from "../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const Admin = () => {
   const [value, setValue] = useState("");
-
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(updateUser(value));
+    dispatch(updateOnlyName(value));
   }
   return (
     <div className="max-w-4xl mx-auto my-8">
